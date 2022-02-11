@@ -1,87 +1,55 @@
+
 <!doctype html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>TP2 </title>
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="tp2style.css">
+         <script src="formulaire.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> TP2 </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    <script type="text/javascript" src="newformulaire.js"></script>
+    </head>
+    <body> 
+        <h1>Saisie d'une fiche "Personne"</h1>
+        
+        <div id="formulaire">
+                <form method="post" action="">
+                    <table>
+                        <tr> <td><label for="nom">Nom </label></td>
+                             <td><input type="text" name="nom" id="nom" /></td>
+                        </tr>
+                        <tr> 
+                            <td><label for="prenom">Prénom </label></td>
+                            <td><input type="text" name="prenom" id="prenom" /></td>
+                        </tr>
+                        <tr> 
+                            <td><label for="datenaissance">Date de naissance   </label></td>
+                            <td><input type="date" name="datenaissance" id="datenaissance" placeholder="JJ/MM/AAAA"/></td>
+                        </tr>
+                        <tr> 
+                            <td><label for="adresse">Adresse </label></td>
+                            <td><input type="text" name="adresse" id="adresse" /></td>
+                        </tr>
+                        <tr> 
+                            <td><label for="email">Mail </label></td>
+                            <td><input type="email" name="email" id="email" /></td>
+                        </tr>
+                        <tr>
+                                <td></td>
+                                <td><input type="button" value="Valider" onclick="validation()"/></td>
+                        </tr>
+                    </table>
+                </form>
+        </div>
+                <div id="space"></div>
+                <div id="error"> </div> 
+                <div id="space"></div>
+                <div id="resultat"> </div> 
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="js/main.js"></script>-->
-</head>
-
-<body>
-    <h1> Saisie d'une fiche personne </h1>
-    <form>
-        <table>
-            <tr>
-                <td>
-                    <label for="lastname">Nom :</label>
-                </td>
-                <td>
-                    <input type="text" id="lastname" Nom="lastname" size="50"><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="fname">Prenom :</label>
-                </td>
-                <td>
-                    <input type="text" id="fname" Prenom="fname" size="50"><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="date of birth">Date de naissance :</label>
-                </td>
-                <td>
-                    <input type="text" id="date of birth" Date de naissance="date of birth" size="50"
-                        placeholder="JJ/MM/AAAA"><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="adress">Adresse :</label>
-                </td>
-                <td>
-                    <input type="text" id="adress" Adresse="adress" size="50"><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="contact">Mail :</label>
-                </td>
-                <td>
-                    <input type="text" id="contact" Mail="contact" size="50"><br>
-                </td>
-            </tr>
-            <tr>
-                <td> </td>
-                <td>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <div id="error"> </div>
-    <div id="resultat"> </div>
-    <input type="button" value="Valider" onclick="validation()">
-
-</body>
+        
+    </body>
 
 </html>

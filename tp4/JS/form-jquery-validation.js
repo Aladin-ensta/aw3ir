@@ -1,195 +1,114 @@
+
 $( document ).ready(function() {
-  // ce code est exécuter une fois que toute la page est téléchargée par le navigateur
-  // voir plus : https://www.w3schools.com/js/js_htmldom.asp
-   console.log( "DOM ready!" );
+    // ce code est exécuter une fois que toute la page est téléchargée par le navigateur
+    // voir plus : https://www.w3schools.com/js/js_htmldom.asp
+     console.log( "DOM ready!" );
+    
+     //ajout du compteur de nombre de caractéres pour chaque champ
+            $(document).keyup(function(){
+// ajout des compteurs de caractére a coté de chaque champs de saisie 
+    var nombreCaractere = $("#name").val().length;
+    var msg =  " " + nombreCaractere + ' Caractère(s)';
+    $('#compteur1').text(msg);
+
+    var nombreCaractere = $("#firstname").val().length;
+    var msg = " "+ nombreCaractere + ' Caractère(s)';
+    $('#compteur2').text(msg);
+
+    var nombreCaractere = $("#birth").val().length;
+    var msg =  " "+ nombreCaractere + ' Caractère(s)';
+    $('#compteur3').text(msg);
+
+    var nombreCaractere = $("#adresse").val().length;
+    var msg = " "+ nombreCaractere + ' Caractère(s)';
+    $('#compteur4').text(msg);
+    
+    var nombreCaractere = $("#mail").val().length;
+    var msg = " "+ nombreCaractere + ' Caractère(s)';
+    $('#compteur5').text(msg);
+
+    // validation des champs avec un minimum de 5 
+   
+
+                valid = true ;
+                if($("#name").val().length < 5 ){
+                    $("#name").css("border-color","#ff0000");
+                    valid=false;
+                }
+                else{
+                    $("#name").css("border-color","#48DE14");
+                }
+                if($("#firstname").val().length < 5 ){
+                    $("#firstname").css("border-color","#ff0000");
+                    valid=false;
+                }
+                else{
+                    $("#firstname").css("border-color","#48DE14");
+                }
+                if($("#birth").val().length < 5 ){
+                    $("#birth").css("border-color","#ff0000");
+                    valid=false;
+                }
+                else{
+                    $("#birth").css("border-color","#48DE14");
+                }
+                if($("#adresse").val().length < 5 ){
+                    $("#adresse").css("border-color","#ff0000");
+                    valid=false;
+                }
+                else{
+                    $("#adresse").css("border-color","#48DE14");
+                }
+                if($("#mail").val().length < 5 ){
+                    $("#mail").css("border-color","#ff0000");
+                    valid=false;
+                }
+                else{
+                    $("#mail").css("border-color","#48DE14");
+                }
+
+                return valid;
+
+            });
+
+
+            $("#formulaire").on("submit",function store(event) { 
+                event.preventDefault();
+                
+                    var inputNom= document.getElementById("name");
+                    var inputPrenom= document.getElementById("firstname");
+                    var inputDn= document.getElementById("birth");
+                    var inputAdresse= document.getElementById("adresse");
+                    var inputEmail= document.getElementById("mail");
+                    
+                    if($("#nom").val() !== "" && $("#firstname").val() !== "" && $("#birth").val() !== "" 
+                  && $("#adresse").val() !== "" && $("#mail").val() !== "" ){
+                    
+                    //stocker les valeurs saisie dans le navigateur
+                    localStorage.setItem("name", inputNom.value);
+                    localStorage.setItem("firstname", inputPrenom.value);
+                    localStorage.setItem("birth", inputDn.value);
+                    localStorage.setItem("adresse", inputAdresse.value);
+                    localStorage.setItem("mail", inputEmail.value);
+
+                   $('#success').addClass("alert alert-success").text("le formulaire est sauvegardé dans le tableau");
+
+                  // $("#tablee").show();
+                   
+                   // ajout des valeurs saisie dans le tableau
+                   document.querySelector("table tbody").innerHTML = document.querySelector("table tbody")
+                   .innerHTML +'<tr><td>'+localStorage.getItem("name")+'</td><td>'+localStorage.getItem("firstname")
+                   
+                  
+                   +'</td><td>'+localStorage.getItem("birth")+'</td><td><a href="https://maps.google.com/maps?q='
+                   +localStorage.getItem("adresse")+'">'+localStorage.getItem("adresse")
+                  
+                   +'</a></td><td><a href=mailto:>'+localStorage.getItem("mail")+'</a></td>';
+                   }
+                  
+            });
+            
+
     
 
-          $("#nom").keyup(function(){
-              if(($("#nom").val().length < 5))
-              {
-                  $("#nom").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#nom").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#Prenom").keyup(function(){
-              if(($("#Prenom").val().length < 5))
-              {
-                  $("#Prenom").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("Prenom").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#Adresse").keyup(function(){
-              if(($("#Adresse").val().length < 5))
-              {
-                  $("#Adresse").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#Adresse").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#datedenaissance").keyup(function(){
-              if(($("#datedenaissance").val().length < 5))
-              {
-                  $("#datedenaissance").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#datedenaissance").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#email").keyup(function(){
-              if(($("#email").val().length < 5))
-              {
-                  $("#email").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#email").css("border-color","#48DE14");
-              }
-          
-          });
-
-          $("#nom").keydown(function(){
-              if(($("#nom").val().length < 5))
-              {
-                  $("#nom").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#nom").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#Prenom").keydown(function(){
-              if(($("#Prenom").val().length < 5))
-              {
-              $("#Prenom").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#Prenom").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#Adresse").keydown(function(){
-              if(($("#Adresse").val().length < 5))
-              {
-                  $("#Adresse").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#Adresse").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#datedenaissance").keydown(function(){
-              if(($("#datedenaissance").val().length < 5))
-              {
-                  $("#datedenaissance").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#datedenaissance").css("border-color","#48DE14");
-              }
-          
-          });
-          $("#email").keydown(function(){
-              if(($("#email").val().length < 5))
-              {
-                  $("#email").css("border-color","#ff0000");
-              }
-              else
-              {
-                  $("#email").css("border-color","#48DE14");
-              }
-          
-          });
-
-
-
-          $("#envoyer").on("click", function (event) {
-          event.preventDefault();
-
-              if($("#nom").val().length < 5)
-              {
-                  $('#myModal').modal("show");
-                  $(".modal-title").text(" Veuillez remplir tout les champs");
-                  $('.modal-body').text(" le champs nom doit contenir au moins 5 caractères ");
-              }
-                  else
-                  { 
-                      if($("#Prenom").val().length < 5)
-                      {
-                              $('#myModal').modal("show");
-                              $(".modal-title").text(" Veuillez remplir tout les champs !");
-                              $('.modal-body').text(" le champs Prenom doit contenir au moins 5 caractères ");
-                      }
-
-                      else 
-                      {
-                          if($("#Adresse").val().length < 5)
-                          {
-                              $('#myModal').modal("show");
-                              $(".modal-title").text(" Veuillez remplir tout les champs !");
-                              $('.modal-body').text(" le champs Adresse doit contenir au moins 5 caractères ");
-                          }
-                          else 
-                          {
-                              if($("#datedenaissance").val().length < 5)
-                              {
-                              $('#myModal').modal("show");
-                              $(".modal-title").text(" Veuillez remplir tout les champs !");
-                              $('.modal-body').text(" le champs date de naissance doit contenir au moins 5 caractères ");
-                              }
-                              else
-                              {
-                                      if($("#email").val().length < 5)
-                                      {
-                                      $('#myModal').modal("show");
-                                      $(".modal-title").text(" Veuillez remplir tout les champs !");
-                                      $('.modal-body').text(" le champs email doit contenir au moins 5 caractères ");
-                                      }
-                                      else
-                                      {
-                                          if($("#nom").val() !== "" && $("#Prenom").val() !== "" && $("#datedenaissance").val() !== "" 
-                                          && $("#Adresse").val() !== "" && $("#email").val() !== "" )
-                                          {
-                                                  $('#myModal').modal("show");
-                                                  $(".modal-title").html("Bienvenue "+ document.querySelector("#Prenom").value);
-                                                  $('.modal-body').html("Vous étes né le: "+ document.querySelector("#datedenaissance").value
-                                                  +"</br>Et vous Habitez à: "
-                                                  + document.querySelector("#Adresse").value
-                                                  +'</br><a href="https://maps.google.com/maps?q='
-                                                  +document.querySelector("#Adresse").value
-                                                  +'"><img src="https://maps.googleapis.com/maps/api/staticmap?markers='
-                                                  +document.querySelector("#Adresse").value+'&zoom=10&size=400x300&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"/></a>');
-                                          }
-                                                      
-                                      }
-                                                  
-                              }
-                                                  
-                          }
-                          
-                          
-                      }
-                      
-                      
-                  }
-              
-      
-  });
 });
-
-  

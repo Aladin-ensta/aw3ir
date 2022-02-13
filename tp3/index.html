@@ -3,158 +3,118 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> TP3 </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+    <title>TP3 Formulaire</title>
+   
+    <!-- jquery pour pouvoir utiliser les composants JS de boostap (modal, tooltip...) -->
+    <!-- CSS boostrap -->
     <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <script src="JS/jquery-3.2.1.slim.min.js"></script>
     <script src="JS/popper.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
-    <script src="JS/form-jquery-validation.js"></script>
-    <script src="JS/gps.js"></script>
+    <script src="JS/form-jquery-validation.js"></script>   
+    <style>
+        .container{
+        margin-bottom: 5% ;
+        margin-left: 5% ;
+        margin-right: 5% ;
+        margin-top: 5% ;
+        }
+        h1{
+        text-align: center;
+        text-decoration: underline;
+        }
+    </style>
+
 
 </head>
 
 <body>
+    
+<!-- -->
+    <h1> TP 3 : Formulaire </h1>
     <div class="container">
-        <h4>Ajouter un contact</h4>
-        <!-- Add your site or application content here -->
+            <!-- -->
+        <form method="POST" action="" id="formulaire">
 
-        <form action="">
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="name">Nom</label>
-                </div>
-                <div class="form-group col">
-                    <input type="text" class="form-control" placeholder="" id="name">
-                </div>
-                <div id="compteur1" class="form-group col-1">
-                    0 car.
+            <div class="form-group row">
+                <label for="Nom" class="col-sm-2 col-form-label">Nom : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nom" placeholder="Insérer votre nom">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="firstname">Prénom</label>
-                </div>
-                <div class="form-group col">
-                    <input type="text" class="form-control" placeholder="" id="firstname">
-                </div>
-                <div id="compteur2" class="form-group col-1">
-                    0 car.
+
+            <div class="form-group row">
+                <label for="Prenom" class="col-sm-2 col-form-label">Prénom : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Prenom" placeholder="Insérer votre prénom">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="birth">Date de naissance</label>
-                </div>
-                <div class="form-group col">
-                    <input type="date" class="form-control" placeholder="" id="birth">
-                </div>
-                <div class="form-group col-1">
+           
+            <div class="form-group row">
+                <label for="datedenaissance" class="col-sm-2 col-form-label">Date de naissance : </label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="datedenaissance" placeholder="JJ/MM/AAAA">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="adresse">Adresse</label>
+
+
+            <div class="form-group row">
+                <label for="Adresse" class="col-sm-2 col-form-label">Adresse : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Adresse" placeholder="Insérer votre Adresse">
                 </div>
-                <div class="form-group col">
-                    <input type="text" class="form-control" placeholder="" id="adresse">
-                    <div id="map">
-                        <!--  image Google Map à mettre à jour -->                            
-                        <img alt="map" width="300" src="https://maps.googleapis.com/maps/api/staticmap?markers=latitude,longitude&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg" hidden>
+            </div>
+
+            <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email : </label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
                     </div>
-                </div>
-                <div class="form-group col-1">
-                    <button class="btn btn-warning" type="button" id="btngps" onclick="getLocation()" >📍 GPS</button>
-                </div>
-                <div class="col-1">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="mail">Mail</label>
-                </div>
-                <div class="form-group col">
-                    <input type="email" class="form-control" placeholder="Votre adresse mail" id="mail">
-                </div>
-                <div class="form-group col-1">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <button id="valide" type="button" class="btn btn-primary">Ajouter</button>
-                </div>
-            </div>
+             </div>
+
+
+
+            <button type="submit" class="btn btn-primary" id="envoyer">
+                Valider
+            </button>
+
+
         </form>
-
-        <div id="success"></div>
-
-        <hr>
-        <h4 style="display: none;">Liste des contacts</h4>
-
-        <table id="table" class="table table-striped table-hover" style="display: none;">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>Adresse</th>
-                    <th>Mail</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>oConnor</td>
-                    <td>Sarah</td>
-                    <td>21/01/2000</td>
-                    <td>
-                        <a href="https://maps.google.com/?q=Paris">Paris</a>
-                    </td>
-                    <td>
-                        <a href="https://www.google.com/intl/fr/gmail/about/">sarah.oconnor@blabla.com</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Vandamme</td>
-                    <td>JL</td>
-                    <td>01/01/1950</td>
-                    <td>
-                        <a href="https://www.google.com/intl/fr/gmail/about/">Bali</a>
-                    </td>
-                    <td>
-                        <a href="https://www.google.com/intl/fr/gmail/about/">jlv@blabla.com</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
-
+        
+        <!-- -->
 
         <div class="modal" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                      <h5 class="modal-title">Bonjour </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
+
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+
+                      <p>Veuillez remplir tous ces champs SVP ! </p>
+
+                       <div id="googleMap" style="width:100%;height:400px;">
+                        <div id="error"></div>
+                       </div>
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    <div class="modal-footer"> 
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">ok</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- -->
     </div>
+
+
+    
+
 </body>
 
 </html>
